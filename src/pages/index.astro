@@ -1,0 +1,59 @@
+---
+import Day from "../components/Day.astro";
+import eats from "../data/eats.json";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<!--
+// v0 by Vercel.
+// https://v0.dev/t/xciwHSfkeVC
+-->
+
+		<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
+			<h1 class="text-1xl font-bold mb-6 md:text-2xl">
+				03/06/2024 - 09/06/2024
+			</h1>
+			<div class="overflow-x-auto">
+				<table class="w-full table-auto border-collapse">
+					<thead>
+						<tr class="bg-gray-100 dark:bg-gray-200">
+							<th class="px-4 py-3 font-semibold text-left"
+								>Day</th
+							>
+							<th class="px-4 py-3 font-semibold text-left"
+								>Breakfast</th
+							>
+							<th class="px-4 py-3 font-semibold text-left"
+								>Lunch</th
+							>
+							<th class="px-4 py-3 font-semibold text-left"
+								>Dinner</th
+							>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							eats.map((item, index) => (
+								<Day
+									day={item.day}
+									breakfast={item.breakfast}
+									lunch={item.lunch}
+									dinner={item.dinner}
+									key={index}
+								/>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
