@@ -42,7 +42,7 @@ jobs:
           password: ${{ secrets.GHCR_PAT }}
       
       - name: Show repository and version
-        run: echo "Building Docker image for repository: ${{ github.repository }} and version: ${{ env.VERSION }}"
+        run: echo "Building Docker image for repository $GITHUB_REPOSITORY and version $VERSION"
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
