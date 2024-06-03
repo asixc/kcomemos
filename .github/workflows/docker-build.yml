@@ -27,12 +27,9 @@ jobs:
       - name: Build the project
         run: npm run build
 
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
-
       - name: Extract version from package.json
         id: extract_version
-        run: echo "VERSION=$(jq -r '.version' package.json)" >> $GITHUB_ENV
+        run: echo "VERSION=$(awk -F '\"' '/\"version\":/ {print $4}' package.json)" >> $GITHUB_ENV
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
