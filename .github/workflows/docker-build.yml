@@ -61,9 +61,15 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd ${{ secrets.PATH_DEPLOYMENTS }}
-            sed -i "s|\(image: ghcr.io/asixc/${{ env.APP_NAME }}:\).*|\1${{ env.VERSION }}|g" docker-compose.yml
-            git add docker-compose.yml
-            git commit -m "Github action deploy new version"
-            git push
+            git pull
+            CURRENT_VERSION=$(grep -oP 'image: ghcr.io/asixc/${{ env.APP_NAME }}:\K[0-9]+\.[0-9]+\.[0-9]+' docker-compose.yml)
+            if [ "$CURRENT_VERSION" != "${{ env.VERSION }}" ]; then
+              sed -i "s|\(image: ghcr.io/asixc/${{ env.APP_NAME }}:\).*|\1${{ env.VERSION }}|g" docker-compose.yml
+              git add docker-compose.yml
+              git commit -m "Github action deploy new version"
+              git push
+            else
+              echo "Version is the same, no need to update."
+            fi
             docker rmi ghcr.io/asixc/${{ env.APP_NAME }}:${{ env.VERSION }} -f
             docker-compose up -d --remove-orphans
