@@ -72,4 +72,4 @@ jobs:
               echo "Version is the same, no need to update."
             fi
             docker rmi ghcr.io/asixc/${{ env.APP_NAME }}:${{ env.VERSION }} -f
-            docker-compose up -d --remove-orphans
+            docker compose up -d --remove-orphans
