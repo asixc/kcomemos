@@ -40,8 +40,10 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}  # O tu nombre de usuario de GitHub específico
           password: ${{ secrets.GHCR_PAT }}
+      
       - name: Show repository and version
         run: echo "Building Docker image for repository: ${{ github.repository }} and version: ${{ env.VERSION }}"
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
