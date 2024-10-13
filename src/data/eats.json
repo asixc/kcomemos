@@ -1,9 +1,12 @@
-[
+{
+    "startDate": "14/10/2024",
+    "endDate":  "20/10/2024",
+    "eats": [
     {
-        "day": "Monday",
-        "breakfast": "Batido o Jamón",
-        "lunch": "Raviolis",
-        "dinner": "Sopa con hamburguesa"
+        "day": "Mon",
+        "breakfast": "Tortilla francesa",
+        "lunch": "Garbanzos con arroz queso de oveja, tomate y cebolla",
+        "dinner": "Brocoli con patata cocida"
     },      
     {
         "day": "Tuesday",
@@ -41,4 +44,4 @@
         "lunch": "",
         "dinner": ""
     }
-]
+]}

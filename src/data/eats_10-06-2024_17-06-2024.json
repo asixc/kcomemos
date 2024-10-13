@@ -1,0 +1,47 @@
+{
+    "startDate": "10/06/2024",
+    "endDate":  "16/06/2024",
+    "eats": [
+    {
+        "day": "Monday",
+        "breakfast": "Tortilla francesa",
+        "lunch": "Garbanzos con arroz queso de oveja, tomate y cebolla",
+        "dinner": "Brocoli con patata cocida"
+    },      
+    {
+        "day": "Tuesday",
+        "breakfast": "Pollo",
+        "lunch": "Cuscus con verdura y heura",
+        "dinner": "Muslitos de pollo con patatas"
+    },
+    {
+        "day": "Wednesday",
+        "breakfast": "Tortilla francesa",
+        "lunch": "Pizza",
+        "dinner": "Revuelto de verduras, huevo y arroz basmati"
+    },  
+    {
+        "day": "Thursday",
+        "breakfast": "Huevo y aguacate",
+        "lunch": "Lentejas, arroz, queso fresco y tomate",
+        "dinner": "Salmón con verduras o patatas"
+    },  
+    {
+        "day": "Friday",
+        "breakfast": "Huevo y aguacate",
+        "lunch": "Noodles con Heura, verduras (brócoli) y soja",
+        "dinner": "Tortita de pavo y queso"
+    },  
+    {
+        "day": "Saturday",
+        "breakfast": "",
+        "lunch": "",
+        "dinner": ""
+    }, 
+    {
+        "day": "Sunday",
+        "breakfast": "",
+        "lunch": "",
+        "dinner": ""
+    }
+]}
