@@ -3,45 +3,45 @@
     "endDate":  "20/10/2024",
     "eats": [
     {
-        "day": "Mon",
+        "day": "Monday",
         "breakfast": "Tortilla francesa",
-        "lunch": "Garbanzos con arroz queso de oveja, tomate y cebolla",
-        "dinner": "Brocoli con patata cocida"
+        "lunch": "Fajitas de pollo y verduras",
+        "dinner": "Ensaladas"
     },      
     {
         "day": "Tuesday",
-        "breakfast": "Pollo",
-        "lunch": "Cuscus con verdura y heura",
-        "dinner": "Muslitos de pollo con patatas"
+        "breakfast": "Tostada de fuet",
+        "lunch": "Arroz con verduras",
+        "dinner": "Judias verdes de bote con patatas"
     },
     {
         "day": "Wednesday",
-        "breakfast": "Tortilla francesa",
-        "lunch": "Pizza",
-        "dinner": "Revuelto de verduras, huevo y arroz basmati"
+        "breakfast": "Torrada de Jamón",
+        "lunch": "Pasta con tomate y atún",
+        "dinner": "Salmón con arroz basmati"
     },  
     {
         "day": "Thursday",
-        "breakfast": "Huevo y aguacate",
+        "breakfast": "",
         "lunch": "Lentejas, arroz, queso fresco y tomate",
-        "dinner": "Salmón con verduras o patatas"
-    },  
-    {
-        "day": "Friday",
-        "breakfast": "Huevo y aguacate",
-        "lunch": "Noodles con Heura, verduras (brócoli) y soja",
         "dinner": "Tortita de pavo y queso"
     },  
     {
+        "day": "Friday",
+        "breakfast": "Aguacate con huevo",
+        "lunch": "Pasta con carne y verdura",
+        "dinner": "Gambas con patatas [Nueva receta - Patatas arrieras]"
+    },  
+    {
         "day": "Saturday",
-        "breakfast": "",
-        "lunch": "",
-        "dinner": ""
+        "breakfast": "Aguacate con huevo",
+        "lunch": "Pulpo a la brasa en base de puré de patata [Nueva receta]",
+        "dinner": "Pizza casera [gastar peperoni]"
     }, 
     {
         "day": "Sunday",
-        "breakfast": "",
-        "lunch": "",
-        "dinner": ""
+        "breakfast": "Undefined",
+        "lunch": "Undefined",
+        "dinner": "Undefined"
     }
 ]}

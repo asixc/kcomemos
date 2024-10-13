@@ -1,0 +1,47 @@
+{
+    "startDate": "xx/xx/2024",
+    "endDate":  "xx/xx/2024",
+    "eats": [
+    {
+        "day": "Monday",
+        "breakfast": "",
+        "lunch": "",
+        "dinner": ""
+    },      
+    {
+        "day": "Tuesday",
+        "breakfast": "",
+        "lunch": "",
+        "dinner": ""
+    },
+    {
+        "day": "Wednesday",
+        "breakfast": "",
+        "lunch": "",
+        "dinner": ""
+    },  
+    {
+        "day": "Thursday",
+        "breakfast": "",
+        "lunch": "",
+        "dinner": ""
+    },  
+    {
+        "day": "Friday",
+        "breakfast": "",
+        "lunch": "",
+        "dinner": ""
+    },  
+    {
+        "day": "Saturday",
+        "breakfast": "",
+        "lunch": "",
+        "dinner": ""
+    }, 
+    {
+        "day": "Sunday",
+        "breakfast": "",
+        "lunch": "",
+        "dinner": ""
+    }
+]}
