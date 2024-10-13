@@ -1,6 +1,9 @@
 ---
 import Day from "../components/Day.astro";
-import eats from "../data/eats.json";
+import eatsData from "../data/eats.json";
+
+// Desestructurar los datos del JSON
+const { startDate, endDate, eats } = eatsData;
 ---
 
 <html lang="en">
@@ -20,7 +23,7 @@ import eats from "../data/eats.json";
 
 		<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
 			<h1 class="text-1xl font-bold mb-6 md:text-2xl">
-				03/06/2024 - 09/06/2024
+				{startDate} - {endDate}
 			</h1>
 			<div class="overflow-x-auto">
 				<table class="w-full table-auto border-collapse">
