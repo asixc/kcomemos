@@ -1,0 +1,47 @@
+{
+    "startDate": "14/10/2024",
+    "endDate":  "20/10/2024",
+    "eats": [
+    {
+        "day": "Monday",
+        "breakfast": "Tortilla francesa",
+        "lunch": "Fajitas de pollo y verduras",
+        "dinner": "Ensaladas"
+    },      
+    {
+        "day": "Tuesday",
+        "breakfast": "Tostada de fuet",
+        "lunch": "Arroz con verduras",
+        "dinner": "Judias verdes de bote con patatas"
+    },
+    {
+        "day": "Wednesday",
+        "breakfast": "Torrada de Jamón",
+        "lunch": "Pasta con tomate y atún",
+        "dinner": "Salmón con arroz basmati"
+    },  
+    {
+        "day": "Thursday",
+        "breakfast": "Aguacate con huevo",
+        "lunch": "Lentejas, arroz, queso fresco y tomate",
+        "dinner": "-Tortita de pavo y queso- [Quedada con Gemma] Alcachopo con patatas y esparragos verdes(Jose) y Pollo vegetal (Heura) con escadibada y patatas fritas"
+    },  
+    {
+        "day": "Friday",
+        "breakfast": "Aguacate con huevo",
+        "lunch": "Pasta con carne y verdura",
+        "dinner": "Hamburguesa de Vicio "
+    },  
+    {
+        "day": "Saturday",
+        "breakfast": "Lomo con queso",
+        "lunch": "Pizza casera [gastar peperoni]",
+        "dinner": "Gambas con patatas [Nueva receta - Patatas arrieras]"
+    }, 
+    {
+        "day": "Sunday",
+        "breakfast": "Nada",
+        "lunch": "Pizza Calzone de jamón dulce y queso con atún y tomate arrabiata",
+        "dinner": "Ensaladas"
+    }
+]}

@@ -1,0 +1,88 @@
+---
+// Numeración 1-based
+function getWeekNumberOneBased(date) {
+    const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const dayOfWeek = d.getDay() || 7;
+    d.setDate(d.getDate() + 4 - dayOfWeek);
+    const yearStart = new Date(d.getFullYear(), 0, 1);
+    const diff = d - yearStart;
+    const weekNumber = Math.floor(diff / (7 * 24 * 60 * 60 * 1000)) + 1;
+    return weekNumber;
+}
+
+
+// Ejemplo de uso:
+const hoy = new Date();
+const weekOfYear = getWeekNumberOneBased(hoy);
+console.log(`La semana del año es: ${weekOfYear}`);
+
+/*
+
+
+// Numeración 0-based
+function getWeekNumberZeroBased(date) {
+    const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const dayOfWeek = d.getDay() || 7;
+    d.setDate(d.getDate() + 4 - dayOfWeek);
+    const yearStart = new Date(d.getFullYear(), 0, 1);
+    const diff = d - yearStart;
+    const weekNumber = Math.floor(diff / (7 * 24 * 60 * 60 * 1000));
+    return weekNumber;
+}
+
+// Numeración 1-based
+function getWeekNumberOneBased(date) {
+    const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const dayOfWeek = d.getDay() || 7;
+    d.setDate(d.getDate() + 4 - dayOfWeek);
+    const yearStart = new Date(d.getFullYear(), 0, 1);
+    const diff = d - yearStart;
+    const weekNumber = Math.floor(diff / (7 * 24 * 60 * 60 * 1000)) + 1;
+    return weekNumber;
+}
+
+// Ejemplos de uso:
+const hoy = new Date();
+const semanaZeroBased = getWeekNumberZeroBased(hoy);
+const semanaOneBased = getWeekNumberOneBased(hoy);
+
+console.log(`Semana del año (0-based): ${semanaZeroBased}`);
+console.log(`Semana del año (1-based): ${semanaOneBased}`);
+
+const fechas = [
+    '2024-01-01', // Semana 0 o 1
+    '2024-01-08', // Semana 1 o 2
+    '2024-12-31', // Última semana del año
+    '2024-10-20'  // Semana 41 o 42
+	'2024-10-21'  // Semana 41 o 42
+];
+
+fechas.forEach(fechaStr => {
+    const fecha = new Date(fechaStr);
+    console.log(`Fecha: ${fecha.toDateString()}`);
+});
+*/
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Descubre recetas deliciosas y fáciles de preparar en Kcomemos. Aprende a cocinar con nuestras guías paso a paso y disfruta de una cocina casera saludable y sabrosa. Visita kcomemos.miriamvalera.com para inspirarte y encontrar tus platos favoritos." />
+		<title>Kcomemos</title>
+	</head>
+	<body>
+		<!--
+// v0 by Vercel.
+// https://v0.dev/t/xciwHSfkeVC
+-->
+
+		<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
+			<h1 class="text-1xl font-bold mb-6 md:text-2xl">
+                Semana del año  {weekOfYear}
+			</h1>
+		</div>
+	</body>
+</html>

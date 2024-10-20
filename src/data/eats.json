@@ -1,47 +1,47 @@
 {
-    "startDate": "14/10/2024",
-    "endDate":  "20/10/2024",
+    "startDate": "21/10/2024",
+    "endDate":  "27/10/2024",
     "eats": [
     {
         "day": "Monday",
-        "breakfast": "Tortilla francesa",
-        "lunch": "Fajitas de pollo y verduras",
-        "dinner": "Ensaladas"
+        "breakfast": "Lomo con queso",
+        "lunch": "Pulpo con crema patatas",
+        "dinner": "Aguacate con huevo"
     },      
     {
         "day": "Tuesday",
-        "breakfast": "Tostada de fuet",
-        "lunch": "Arroz con verduras",
-        "dinner": "Judias verdes de bote con patatas"
+        "breakfast": "Aguacate con huevo",
+        "lunch": "Patatas con Hamburguesa",
+        "dinner": "Crema de calabaza"
     },
     {
         "day": "Wednesday",
-        "breakfast": "Torrada de Jamón",
-        "lunch": "Pasta con tomate y atún",
+        "breakfast": "Tostada de Fuet",
+        "lunch": "Pasta con carne y verduras",
         "dinner": "Salmón con arroz basmati"
     },  
     {
         "day": "Thursday",
-        "breakfast": "",
-        "lunch": "Lentejas, arroz, queso fresco y tomate",
-        "dinner": "Tortita de pavo y queso"
+        "breakfast": "Tostada de tortilla",
+        "lunch": "Lentejas con chorizo",
+        "dinner": "Ensaladas"
     },  
     {
         "day": "Friday",
-        "breakfast": "Aguacate con huevo",
-        "lunch": "Pasta con carne y verdura",
-        "dinner": "Gambas con patatas [Nueva receta - Patatas arrieras]"
+        "breakfast": "Tostada de jamón / fuet o tortilla",
+        "lunch": "Lasaña de calabacín",
+        "dinner": "Boquerones al limón"
     },  
     {
         "day": "Saturday",
-        "breakfast": "Aguacate con huevo",
-        "lunch": "Pulpo a la brasa en base de puré de patata [Nueva receta]",
-        "dinner": "Pizza casera [gastar peperoni]"
+        "breakfast": "Tostada de jamón / fuet o tortilla",
+        "lunch": "Pollo con verduras y cuscús",
+        "dinner": "Gambas a la plancha"
     }, 
     {
         "day": "Sunday",
-        "breakfast": "Undefined",
-        "lunch": "Undefined",
-        "dinner": "Undefined"
+        "breakfast": "Nada",
+        "lunch": "Empanadas caseras de carne o atún con pisto [cebolla, pimiento rojo, pimiento verde, calabacín, tomate frito, atún o carne, huevo duro]",
+        "dinner": "Ensalada"
     }
 ]}
