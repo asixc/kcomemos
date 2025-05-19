@@ -1,0 +1,47 @@
+{
+    "startDate": "21/10/2024",
+    "endDate":  "27/10/2024",
+    "eats": [
+    {
+        "day": "Monday",
+        "breakfast": "Lomo con queso",
+        "lunch": "Pulpo con crema patatas",
+        "dinner": "Aguacate con huevo"
+    },      
+    {
+        "day": "Tuesday",
+        "breakfast": "Aguacate con huevo",
+        "lunch": "Patatas con Hamburguesa",
+        "dinner": "Crema de calabaza"
+    },
+    {
+        "day": "Wednesday",
+        "breakfast": "Tostada de Fuet",
+        "lunch": "Pasta con carne y verduras",
+        "dinner": "Salmón con arroz basmati"
+    },  
+    {
+        "day": "Thursday",
+        "breakfast": "Tostada de tortilla",
+        "lunch": "Lentejas con chorizo",
+        "dinner": "Ensaladas"
+    },  
+    {
+        "day": "Friday",
+        "breakfast": "Tostada de jamón / fuet o tortilla",
+        "lunch": "Lasaña de calabacín",
+        "dinner": "Boquerones al limón"
+    },  
+    {
+        "day": "Saturday",
+        "breakfast": "Tostada de jamón / fuet o tortilla",
+        "lunch": "Pollo con verduras y cuscús",
+        "dinner": "Gambas a la plancha"
+    }, 
+    {
+        "day": "Sunday",
+        "breakfast": "Nada",
+        "lunch": "Empanadas caseras de carne o atún con pisto [cebolla, pimiento rojo, pimiento verde, calabacín, tomate frito, atún o carne, huevo duro]",
+        "dinner": "Ensalada"
+    }
+]}
