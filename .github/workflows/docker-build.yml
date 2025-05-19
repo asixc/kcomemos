@@ -59,7 +59,9 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
+          debug: true  
           script: |
+            echo "¡Comprobando SSH!"
             cd ${{ secrets.PATH_DEPLOYMENTS }}
             git pull
             CURRENT_VERSION=$(grep -oP 'image: ghcr.io/asixc/${{ env.APP_NAME }}:\K[0-9]+\.[0-9]+\.[0-9]+' docker-compose.yml)
