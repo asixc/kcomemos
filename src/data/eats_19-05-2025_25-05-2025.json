@@ -1,0 +1,48 @@
+{
+    "startDate": "19/05/2025",
+    "endDate": "25/05/2025",
+    "eats": [
+        {
+            "day": "Monday",
+            "breakfast": "TEST - Pan sin gluten + jamón serrano (210 kcal)\nJose: café con leche (90 kcal)\nMiriam: agua (0 kcal)",
+            "lunch": "Jose: Hamburguesa pollo + cuscús + verduras + yogur + café\nMiriam: Hamburguesa pollo + cuscús + verduras + yogur + agua",
+            "dinner": "Jose y Miriam: Nuggets Heura + verduras + yogur griego"
+        },
+        {
+            "day": "Tuesday",
+            "breakfast": "Pan sin gluten + fuet (240 kcal)\nJose: café con leche (90 kcal)\nMiriam: agua (0 kcal)",
+            "lunch": "Jose: Arroz + salmón + soja + natillas + café\nMiriam: Arroz + salmón + soja + natillas + agua",
+            "dinner": "Jose y Miriam: Tortita trigo + queso Havarti + yogur griego"
+        },
+        {
+            "day": "Wednesday",
+            "breakfast": "Jose: Tostadas trigo sarraceno + tortilla + tomate + café con leche (290 kcal)\nMiriam: Tortilla francesa 2 huevos + tomate + agua (230 kcal)",
+            "lunch": "Jose y Miriam: Pollo + verduras + arroz integral + yogur",
+            "dinner": "Jose: Pescado blanco + verduras + patata cocida + yogur griego\nMiriam: Pescado blanco + verduras + patata cocida"
+        },
+        {
+            "day": "Thursday",
+            "breakfast": "Tostadas trigo sarraceno + jamón serrano (240 kcal)\nJose: café con leche (90 kcal)\nMiriam: agua (0 kcal)",
+            "lunch": "Jose y Miriam: Pavo + arroz integral + verduras cocidas",
+            "dinner": "Jose y Miriam: Crema calabaza + tortilla + verduras cocidas + yogur griego"
+        },
+        {
+            "day": "Friday",
+            "breakfast": "Tostadas trigo sarraceno + aguacate + huevo poché (265 kcal)\nJose: café con leche (90 kcal)\nMiriam: agua (0 kcal)",
+            "lunch": "Jose y Miriam: Paella de verduras + pollo",
+            "dinner": "Jose y Miriam: Verduras + queso viejo + pollo + yogur griego"
+        },
+        {
+            "day": "Saturday",
+            "breakfast": "Tostadas trigo sarraceno + jamón serrano (240 kcal)\nJose: café con leche (90 kcal)\nMiriam: agua (0 kcal)",
+            "lunch": "Jose y Miriam: Pizza integral casera + mozzarella + pollo + verduras",
+            "dinner": "Jose y Miriam: Salteado verduras + tofu/pollo + arroz + yogur griego"
+        },
+        {
+            "day": "Sunday",
+            "breakfast": "Pan sin gluten + fuet (240 kcal)\nJose: café con leche (90 kcal)\nMiriam: agua (0 kcal)",
+            "lunch": "Jose y Miriam: Asado ternera + patata + verduras",
+            "dinner": "Jose: Ensalada César sin lechuga + queso + pan + yogur griego\nMiriam: Verduras al vapor + parmesano + pan sin gluten + yogur griego"
+        }
+    ]
+}

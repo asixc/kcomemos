@@ -1,48 +1,48 @@
 {
-    "startDate": "19/05/2025",
-    "endDate": "25/05/2025",
-    "eats": [
-        {
-            "day": "Monday",
-            "breakfast": "TEST - Pan sin gluten + jamón serrano (210 kcal)\nJose: café con leche (90 kcal)\nMiriam: agua (0 kcal)",
-            "lunch": "Jose: Hamburguesa pollo + cuscús + verduras + yogur + café\nMiriam: Hamburguesa pollo + cuscús + verduras + yogur + agua",
-            "dinner": "Jose y Miriam: Nuggets Heura + verduras + yogur griego"
-        },
-        {
-            "day": "Tuesday",
-            "breakfast": "Pan sin gluten + fuet (240 kcal)\nJose: café con leche (90 kcal)\nMiriam: agua (0 kcal)",
-            "lunch": "Jose: Arroz + salmón + soja + natillas + café\nMiriam: Arroz + salmón + soja + natillas + agua",
-            "dinner": "Jose y Miriam: Tortita trigo + queso Havarti + yogur griego"
-        },
-        {
-            "day": "Wednesday",
-            "breakfast": "Jose: Tostadas trigo sarraceno + tortilla + tomate + café con leche (290 kcal)\nMiriam: Tortilla francesa 2 huevos + tomate + agua (230 kcal)",
-            "lunch": "Jose y Miriam: Pollo + verduras + arroz integral + yogur",
-            "dinner": "Jose: Pescado blanco + verduras + patata cocida + yogur griego\nMiriam: Pescado blanco + verduras + patata cocida"
-        },
-        {
-            "day": "Thursday",
-            "breakfast": "Tostadas trigo sarraceno + jamón serrano (240 kcal)\nJose: café con leche (90 kcal)\nMiriam: agua (0 kcal)",
-            "lunch": "Jose y Miriam: Pavo + arroz integral + verduras cocidas",
-            "dinner": "Jose y Miriam: Crema calabaza + tortilla + verduras cocidas + yogur griego"
-        },
-        {
-            "day": "Friday",
-            "breakfast": "Tostadas trigo sarraceno + aguacate + huevo poché (265 kcal)\nJose: café con leche (90 kcal)\nMiriam: agua (0 kcal)",
-            "lunch": "Jose y Miriam: Paella de verduras + pollo",
-            "dinner": "Jose y Miriam: Verduras + queso viejo + pollo + yogur griego"
-        },
-        {
-            "day": "Saturday",
-            "breakfast": "Tostadas trigo sarraceno + jamón serrano (240 kcal)\nJose: café con leche (90 kcal)\nMiriam: agua (0 kcal)",
-            "lunch": "Jose y Miriam: Pizza integral casera + mozzarella + pollo + verduras",
-            "dinner": "Jose y Miriam: Salteado verduras + tofu/pollo + arroz + yogur griego"
-        },
-        {
-            "day": "Sunday",
-            "breakfast": "Pan sin gluten + fuet (240 kcal)\nJose: café con leche (90 kcal)\nMiriam: agua (0 kcal)",
-            "lunch": "Jose y Miriam: Asado ternera + patata + verduras",
-            "dinner": "Jose: Ensalada César sin lechuga + queso + pan + yogur griego\nMiriam: Verduras al vapor + parmesano + pan sin gluten + yogur griego"
-        }
-    ]
+  "startDate": "02/09/2025",
+  "endDate": "08/09/2025",
+  "eats": [
+    {
+      "day": "Tuesday",
+      "breakfast": "Pan sin gluten con AOVE y fuet (último día de fuet)",
+      "lunch": "Butifarra con judías blancas",
+      "dinner": "Tortilla francesa con pimiento rojo a la plancha y ensalada verde; yogur griego de postre"
+    },
+    {
+      "day": "Wednesday",
+      "breakfast": "Tostadas de trigo sarraceno con AOVE y jamón serrano",
+      "lunch": "Hamburguesa de pollo (2 uds) + batata",
+      "dinner": "Pescado blanco a la plancha con verduras al vapor (día de entreno); yogur griego de postre"
+    },
+    {
+      "day": "Thursday",
+      "breakfast": "Pan sin gluten con AOVE y hummus de lentejas",
+      "lunch": "Huevos al plato con verduras (tomate, pimiento) y pan",
+      "dinner": "Crema de calabacín con tostas integrales; yogur griego de postre"
+    },
+    {
+      "day": "Friday",
+      "breakfast": "Bocadillo pequeño de jamón serrano con pan y AOVE",
+      "lunch": "Salmón a la plancha con arroz",
+      "dinner": "Ensalada completa con espinaca baby, garbanzos y huevo duro (día de entreno); yogur griego de postre"
+    },
+    {
+      "day": "Saturday",
+      "breakfast": "Tostadas de trigo sarraceno con aguacate y AOVE",
+      "lunch": "Lentejas guisadas con verduras y arroz",
+      "dinner": "Salteado ligero de verduras con tofu y salsa de soja; yogur griego de postre"
+    },
+    {
+      "day": "Sunday",
+      "breakfast": "Pan sin gluten con AOVE y queso fresco",
+      "lunch": "Hamburguesa de ternera (2 uds) + pimientos salteados + patata asada",
+      "dinner": "Verduras al horno con parmesano; yogur griego de postre"
+    },
+    {
+      "day": "Monday",
+      "breakfast": "Tostadas con AOVE y tortilla francesa de un huevo",
+      "lunch": "Arroz integral con verduras y pollo en tiras",
+      "dinner": "Tortilla de claras con espinacas baby + ensalada ligera (día de entreno); yogur griego de postre"
+    }
+  ]
 }
