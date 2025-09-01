@@ -6,7 +6,7 @@ on:
 
 permissions:
   contents: read
-  packages: write   # para publicar en GHCR con GITHUB_TOKEN
+  packages: write
 
 jobs:
   build-and-deploy:
@@ -27,17 +27,20 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Extract version & name
+      - name: Extract version & name (node)
         run: |
-          echo "VERSION=$(awk -F '\"' '/\"version\":/ {print $4}' package.json)" >> $GITHUB_ENV
-          echo "APP_NAME=$(awk -F '\"' '/\"name\":/ {print $4}' package.json)" >> $GITHUB_ENV
+          VERSION=$(node -p "require('./package.json').version")
+          APP_NAME=$(node -p "require('./package.json').name")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "APP_NAME=$APP_NAME" >> $GITHUB_ENV
 
-      - name: Login GHCR (GITHUB_TOKEN)
+      # ---- GHCR login con PAT de escritura ----
+      - name: Login GHCR (PAT)
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GHCR_PAT }}
 
       - name: Build & push image
         uses: docker/build-push-action@v5
@@ -47,7 +50,9 @@ jobs:
           push: true
           tags: ghcr.io/${{ github.repository }}:${{ env.VERSION }}
 
+      # ---- SSH known_hosts desde secreto ----
       - name: Write known_hosts
+        if: ${{ secrets.SSH_KNOWN_HOSTS != '' }}
         run: |
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
@@ -66,6 +71,7 @@ jobs:
             hostname
             uptime
 
+      # ---- Deploy en el servidor ----
       - name: Deploy over SSH
         uses: appleboy/ssh-action@v1.2.2
         with:
@@ -79,7 +85,7 @@ jobs:
             cd "${{ secrets.PATH_DEPLOYMENTS }}"
             git pull
 
-            # --- Actualiza la imagen en docker-compose.yml si cambia la versión ---
+            # (Opcional) Actualizar tag en docker-compose si detectas versión distinta
             if grep -qE "image:\s*ghcr\.io/asixc/${{ env.APP_NAME }}:" docker-compose.yml; then
               CURRENT_VERSION=$(grep -oP 'image:\s*ghcr\.io/asixc/${{ env.APP_NAME }}:\K[0-9]+\.[0-9]+\.[0-9]+' docker-compose.yml || true)
               if [ "${CURRENT_VERSION:-}" != "${{ env.VERSION }}" ]; then
@@ -92,7 +98,7 @@ jobs:
               echo "No se encontró la línea de image esperada; no se modifica docker-compose.yml"
             fi
 
-            # --- Si la imagen es PRIVADA en GHCR, descomenta el login de solo lectura ---
+            # Si tu imagen es PRIVADA en GHCR, haz login de solo lectura en el server:
             docker login ghcr.io -u "${{ secrets.GHCR_READ_USER }}" -p "${{ secrets.GHCR_READ_PAT }}"
 
             docker compose pull kcomemos || true
