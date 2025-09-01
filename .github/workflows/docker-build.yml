@@ -34,7 +34,7 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "APP_NAME=$APP_NAME" >> $GITHUB_ENV
 
-      # ---- GHCR login con PAT de escritura ----
+      # Login GHCR con PAT (scope write:packages)
       - name: Login GHCR (PAT)
         uses: docker/login-action@v3
         with:
@@ -50,13 +50,16 @@ jobs:
           push: true
           tags: ghcr.io/${{ github.repository }}:${{ env.VERSION }}
 
-      # ---- SSH known_hosts desde secreto ----
-      - name: Write known_hosts
-        if: ${{ secrets.SSH_KNOWN_HOSTS != '' }}
+      # Escribe known_hosts solo si hay secreto (sin usar if: del step)
+      - name: Prepare known_hosts
         run: |
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
-          echo "${{ secrets.SSH_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+          if [ -n "${{ secrets.SSH_KNOWN_HOSTS }}" ]; then
+            echo "${{ secrets.SSH_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+          else
+            touch ~/.ssh/known_hosts
+          fi
           chmod 600 ~/.ssh/known_hosts
 
       - name: SSH smoke test
@@ -71,7 +74,6 @@ jobs:
             hostname
             uptime
 
-      # ---- Deploy en el servidor ----
       - name: Deploy over SSH
         uses: appleboy/ssh-action@v1.2.2
         with:
@@ -85,7 +87,7 @@ jobs:
             cd "${{ secrets.PATH_DEPLOYMENTS }}"
             git pull
 
-            # (Opcional) Actualizar tag en docker-compose si detectas versión distinta
+            # (Opcional) Actualiza la tag en docker-compose.yml si cambia la versión
             if grep -qE "image:\s*ghcr\.io/asixc/${{ env.APP_NAME }}:" docker-compose.yml; then
               CURRENT_VERSION=$(grep -oP 'image:\s*ghcr\.io/asixc/${{ env.APP_NAME }}:\K[0-9]+\.[0-9]+\.[0-9]+' docker-compose.yml || true)
               if [ "${CURRENT_VERSION:-}" != "${{ env.VERSION }}" ]; then
@@ -98,7 +100,7 @@ jobs:
               echo "No se encontró la línea de image esperada; no se modifica docker-compose.yml"
             fi
 
-            # Si tu imagen es PRIVADA en GHCR, haz login de solo lectura en el server:
+            # Si la imagen en GHCR es privada, login de solo lectura en el servidor:
             docker login ghcr.io -u "${{ secrets.GHCR_READ_USER }}" -p "${{ secrets.GHCR_READ_PAT }}"
 
             docker compose pull kcomemos || true
