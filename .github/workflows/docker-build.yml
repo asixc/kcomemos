@@ -4,16 +4,21 @@ on:
   push:
     branches: [ main ]
 
+# Solo lo mínimo para este job (el push a GHCR va con tu PAT)
 permissions:
   contents: read
   packages: write
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout app repo
         uses: actions/checkout@v4
 
       - name: Setup Node
@@ -27,14 +32,14 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Extract version & name (node)
+      - name: Extract version & name
         run: |
           VERSION=$(node -p "require('./package.json').version")
           APP_NAME=$(node -p "require('./package.json').name")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "APP_NAME=$APP_NAME" >> $GITHUB_ENV
 
-      # Login GHCR con PAT (scope write:packages)
+      # ---------- Push de la imagen a GHCR con tu PAT ----------
       - name: Login GHCR (PAT)
         uses: docker/login-action@v3
         with:
@@ -50,11 +55,40 @@ jobs:
           push: true
           tags: ghcr.io/${{ github.repository }}:${{ env.VERSION }}
 
-      # Escribe known_hosts solo si hay secreto (sin usar if: del step)
+      # ---------- Bump en repo de deployments (fuente de verdad) ----------
+      - name: Checkout deployments repo
+        uses: actions/checkout@v4
+        with:
+          repository: asixc/deployments
+          token: ${{ secrets.DEPLOYMENTS_PAT }}     # Fine-grained PAT con Contents: Read & Write
+          path: deployments-repo
+
+      - name: Update image tag in docker-compose.yml
+        working-directory: deployments-repo
+        run: |
+          set -euo pipefail
+          FILE="docker-compose.yml"   # ajusta si está en otra ruta
+          IMAGE="ghcr.io/${{ github.repository }}:${{ env.VERSION }}"
+          if [ ! -f "$FILE" ]; then
+            echo "ERROR: $FILE no existe"; ls -la; exit 1
+          fi
+          # Cambia cualquier línea 'image: ghcr.io/<algo>:<tag>' por la nueva imagen
+          sed -i -E "s|(image:\s*)ghcr\.io/.+:\S+|\1${IMAGE}|g" "$FILE"
+
+          git config user.name "ci-bot"
+          git config user.email "ci-bot@users.noreply.github.com"
+          git add "$FILE"
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "ci: bump ${{ env.APP_NAME }} to v${{ env.VERSION }}"
+            git push origin HEAD:main
+          fi
+
+      # ---------- known_hosts opcional (sin if: con secrets) ----------
       - name: Prepare known_hosts
         run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
           if [ -n "${{ secrets.SSH_KNOWN_HOSTS }}" ]; then
             echo "${{ secrets.SSH_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
           else
@@ -62,18 +96,7 @@ jobs:
           fi
           chmod 600 ~/.ssh/known_hosts
 
-      - name: SSH smoke test
-        uses: appleboy/ssh-action@v1.2.2
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          port: ${{ secrets.SSH_PORT }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            whoami
-            hostname
-            uptime
-
+      # ---------- Deploy: el servidor solo hace pull + compose ----------
       - name: Deploy over SSH
         uses: appleboy/ssh-action@v1.2.2
         with:
@@ -84,25 +107,26 @@ jobs:
           debug: true
           script: |
             set -euo pipefail
-            cd "${{ secrets.PATH_DEPLOYMENTS }}"
-            git pull
 
-            # (Opcional) Actualiza la tag en docker-compose.yml si cambia la versión
-            if grep -qE "image:\s*ghcr\.io/asixc/${{ env.APP_NAME }}:" docker-compose.yml; then
-              CURRENT_VERSION=$(grep -oP 'image:\s*ghcr\.io/asixc/${{ env.APP_NAME }}:\K[0-9]+\.[0-9]+\.[0-9]+' docker-compose.yml || true)
-              if [ "${CURRENT_VERSION:-}" != "${{ env.VERSION }}" ]; then
-                sed -i -E "s|(image:\s*ghcr\.io/asixc/${{ env.APP_NAME }}:).*|\1${{ env.VERSION }}|g" docker-compose.yml
-                echo "docker-compose.yml actualizado a ${{ env.VERSION }}"
-              else
-                echo "Version is the same, no need to update."
-              fi
-            else
-              echo "No se encontró la línea de image esperada; no se modifica docker-compose.yml"
+            DIR="${{ secrets.PATH_DEPLOYMENTS }}"
+            if [ -z "${DIR}" ] || [ ! -d "${DIR}" ]; then
+              echo "ERROR: PATH_DEPLOYMENTS inválido o no existe: ${DIR}"
+              exit 1
             fi
 
-            # Si la imagen en GHCR es privada, login de solo lectura en el servidor:
-            docker login ghcr.io -u "${{ secrets.GHCR_READ_USER }}" -p "${{ secrets.GHCR_READ_PAT }}"
+            cd "${DIR}"
+            git pull
 
+            # Si la imagen GHCR es PRIVADA y has creado estos secretos, haz login de lectura
+            if [ -n "${{ secrets.GHCR_READ_USER }}" ] && [ -n "${{ secrets.GHCR_READ_PAT }}" ]; then
+              echo "Login en GHCR (read-only) en el servidor…"
+              docker login ghcr.io -u "${{ secrets.GHCR_READ_USER }}" -p "${{ secrets.GHCR_READ_PAT }}"
+            else
+              echo "Saltando docker login en servidor (imagen pública o sin secretos)."
+            fi
+
+            # Lanza el servicio (ajusta 'kcomemos' si tu servicio se llama distinto)
             docker compose pull kcomemos || true
             docker compose up -d kcomemos
-            docker image prune -f
+
+            docker image prune -f || true
