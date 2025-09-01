@@ -1,77 +1,100 @@
-name: Build and Push Docker Image
+name: Build and Deploy
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    branches: [ main ]
+
+permissions:
+  contents: read
+  packages: write   # para publicar en GHCR con GITHUB_TOKEN
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install
+        run: npm ci
 
-      - name: Build the project
+      - name: Build
         run: npm run build
 
-      - name: Extract version from package.json
-        id: extract_version
-        run: echo "VERSION=$(awk -F '\"' '/\"version\":/ {print $4}' package.json)" >> $GITHUB_ENV
+      - name: Extract version & name
+        run: |
+          echo "VERSION=$(awk -F '\"' '/\"version\":/ {print $4}' package.json)" >> $GITHUB_ENV
+          echo "APP_NAME=$(awk -F '\"' '/\"name\":/ {print $4}' package.json)" >> $GITHUB_ENV
 
-      - name: Extract name from package.json
-        id: extract_name
-        run: echo "APP_NAME=$(awk -F '\"' '/\"name\":/ {print $4}' package.json)" >> $GITHUB_ENV
-      - name: Login to GitHub Container Registry
+      - name: Login GHCR (GITHUB_TOKEN)
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}  # O tu nombre de usuario de GitHub específico
-          password: ${{ secrets.GHCR_PAT }}
-      
-      - name: Show repository and version
-        run: echo "Building Docker image for repository $GITHUB_REPOSITORY and version $VERSION"
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
+      - name: Build & push image
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository }}:${{ env.VERSION }}
-      
-      - name: SSH to server and update docker-compose
+
+      - name: Write known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: SSH smoke test
         uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          debug: true  
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            echo "¡Comprobando SSH!"
-            cd ${{ secrets.PATH_DEPLOYMENTS }}
+            whoami
+            hostname
+            uptime
+
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          debug: true
+          script: |
+            set -euo pipefail
+            cd "${{ secrets.PATH_DEPLOYMENTS }}"
             git pull
-            CURRENT_VERSION=$(grep -oP 'image: ghcr.io/asixc/${{ env.APP_NAME }}:\K[0-9]+\.[0-9]+\.[0-9]+' docker-compose.yml)
-            if [ "$CURRENT_VERSION" != "${{ env.VERSION }}" ]; then
-              sed -i "s|\(image: ghcr.io/asixc/${{ env.APP_NAME }}:\).*|\1${{ env.VERSION }}|g" docker-compose.yml
-              git add docker-compose.yml
-              git commit -m "Github action deploy new version"
-              git push
+
+            # --- Actualiza la imagen en docker-compose.yml si cambia la versión ---
+            if grep -qE "image:\s*ghcr\.io/asixc/${{ env.APP_NAME }}:" docker-compose.yml; then
+              CURRENT_VERSION=$(grep -oP 'image:\s*ghcr\.io/asixc/${{ env.APP_NAME }}:\K[0-9]+\.[0-9]+\.[0-9]+' docker-compose.yml || true)
+              if [ "${CURRENT_VERSION:-}" != "${{ env.VERSION }}" ]; then
+                sed -i -E "s|(image:\s*ghcr\.io/asixc/${{ env.APP_NAME }}:).*|\1${{ env.VERSION }}|g" docker-compose.yml
+                echo "docker-compose.yml actualizado a ${{ env.VERSION }}"
+              else
+                echo "Version is the same, no need to update."
+              fi
             else
-              echo "Version is the same, no need to update."
+              echo "No se encontró la línea de image esperada; no se modifica docker-compose.yml"
             fi
-            docker rmi ghcr.io/asixc/${{ env.APP_NAME }}:${{ env.VERSION }} -f
+
+            # --- Si la imagen es PRIVADA en GHCR, descomenta el login de solo lectura ---
+            docker login ghcr.io -u "${{ secrets.GHCR_READ_USER }}" -p "${{ secrets.GHCR_READ_PAT }}"
+
+            docker compose pull kcomemos || true
             docker compose up -d kcomemos
+            docker image prune -f
