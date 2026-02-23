@@ -1,6 +1,6 @@
 {
   "startDate": "24/02/2026",
-  "endDate": "02/03/2026",
+  "endDate": "03/03/2026",
   "eats": [
     {
       "day": "Tuesday",
@@ -18,10 +18,10 @@
     },
     {
       "day": "Thursday",
-      "breakfast": "Yogur griego con nueces y cacao 100%",
+      "breakfast": "Pan sin gluten con tomate rallado y jamón serrano",
       "lunch": "Pasta integral con verduras y pollo troceado",
       "merienda": "Pieza de fruta entera (manzana o pera)",
-      "dinner": "CUMPLEAÑOS: Cena fuera (Intenta elegir proteína y evita el pan innecesario)"
+      "dinner": "CUMPLEAÑOS: Cena fuera (Prioriza proteína y evita el pan)"
     },
     {
       "day": "Friday",
@@ -33,28 +33,28 @@
     {
       "day": "Saturday",
       "breakfast": "Tortilla de 2 huevos con un poco de jamón",
-      "lunch": "CELEBRACIÓN: Comida fuera (Disfruta, pero intenta no pasarte con los postres)",
+      "lunch": "CELEBRACIÓN: Comida fuera (Disfruta con moderación)",
       "merienda": "Infusión o café solo",
       "dinner": "Crema de verduras casera (sin patata) y una pieza de fruta"
     },
     {
       "day": "Sunday",
       "breakfast": "Pan sin gluten con AOVE y tomate rallado",
-      "lunch": "Butifarra con judías blancas (Tu favorito, controlando la ración de judías)",
+      "lunch": "Butifarra con judías blancas (Ración controlada de legumbre)",
       "merienda": "Batido: 200ml leche semi + 25g proteína AMIX",
       "dinner": "Sopa de caldo Aneto con un poco de pollo desmenuzado"
     },
     {
       "day": "Monday",
       "breakfast": "Tostada de aguacate",
-      "lunch": "Hamburguesa de ternera (2 uds) con patata al horno (Movido del sábado)",
+      "lunch": "Hamburguesa de ternera (2 uds) con patata al horno",
       "merienda": "Batido: 200ml leche semi + 25g proteína AMIX",
-      "dinner": "Salmón a la plancha con 60 gramos para dos de arroz basmati" 
+      "dinner": "Salmón a la plancha con 60 gramos para dos de arroz basmati"
     },
     {
       "day": "Tuesday",
       "breakfast": "Pan sin gluten con jamón",
-      "lunch": "Pizza casera masa fina con verduras y pollo (Movido del jueves)",
+      "lunch": "Pizza casera masa fina con verduras y pollo",
       "merienda": "Fruta entera",
       "dinner": "Tostada de aguacate con huevo escalfado"
     }
