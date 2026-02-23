@@ -1,48 +1,62 @@
 {
-  "startDate": "02/09/2025",
-  "endDate": "08/09/2025",
+  "startDate": "24/02/2026",
+  "endDate": "02/03/2026",
   "eats": [
     {
       "day": "Tuesday",
-      "breakfast": "Pan sin gluten con AOVE y fuet (último día de fuet)",
-      "lunch": "Butifarra con judías blancas",
-      "dinner": "Tortilla de claras con espinacas baby + ensalada ligera (día de entreno); yogur griego de postre"
+      "breakfast": "Pan sin gluten con AOVE y jamón serrano",
+      "lunch": "Lentejas guisadas con muchas verduras y tomate (o arroz con verduras si no hay)",
+      "merienda": "Batido: 200ml leche semi + 25g proteína AMIX (sin plátano)",
+      "dinner": "Tortilla francesa de 2 huevos y una lata de atún al natural (Cena limpia)"
     },
     {
       "day": "Wednesday",
-      "breakfast": "Tostadas de trigo sarraceno con AOVE y jamón serrano",
-      "lunch": "Hamburguesa de pollo (2 uds) + batata",
-      "dinner": "Pescado blanco a la plancha con verduras al vapor (día de entreno); yogur griego de postre"
+      "breakfast": "Tostada de pan de sarraceno con aguacate y huevo",
+      "lunch": "Salmón a la airfryer con una base pequeña de arroz basmati",
+      "merienda": "Batido: 200ml leche semi + 25g proteína AMIX + 1 plátano (Día de entreno)",
+      "dinner": "Pescado blanco a la plancha con espárragos verdes; yogur griego"
     },
     {
       "day": "Thursday",
-      "breakfast": "Pan sin gluten con AOVE y hummus de lentejas",
-      "lunch": "Huevos al plato con verduras (tomate, pimiento) y pan",
-      "dinner": "Crema de calabacín con tostas integrales; yogur griego de postre"
+      "breakfast": "Yogur griego con nueces y cacao 100%",
+      "lunch": "Pasta integral con verduras y pollo troceado",
+      "merienda": "Pieza de fruta entera (manzana o pera)",
+      "dinner": "CUMPLEAÑOS: Cena fuera (Intenta elegir proteína y evita el pan innecesario)"
     },
     {
       "day": "Friday",
-      "breakfast": "Bocadillo pequeño de jamón serrano con pan y AOVE",
-      "lunch": "Salmón a la plancha con arroz",
-      "dinner": "Ensalada completa con espinaca baby, garbanzos y huevo duro (día de entreno); yogur griego de postre"
+      "breakfast": "Tostada con queso fresco y pavo",
+      "lunch": "Pollo al horno con verduras variadas (pimientos, cebolla, calabacín)",
+      "merienda": "Batido: 200ml leche semi + 25g proteína AMIX",
+      "dinner": "Ensalada completa con brotes, huevo duro, atún y semillas"
     },
     {
       "day": "Saturday",
-      "breakfast": "Tostadas de trigo sarraceno con aguacate y AOVE",
-      "lunch": "Lentejas guisadas con verduras y arroz",
-      "dinner": "Salteado ligero de verduras con tofu y salsa de soja; yogur griego de postre"
+      "breakfast": "Tortilla de 2 huevos con un poco de jamón",
+      "lunch": "CELEBRACIÓN: Comida fuera (Disfruta, pero intenta no pasarte con los postres)",
+      "merienda": "Infusión o café solo",
+      "dinner": "Crema de verduras casera (sin patata) y una pieza de fruta"
     },
     {
       "day": "Sunday",
-      "breakfast": "Pan sin gluten con AOVE y queso fresco",
-      "lunch": "Hamburguesa de ternera (2 uds) + pimientos salteados + patata asada",
-      "dinner": "Verduras al horno con parmesano; yogur griego de postre"
+      "breakfast": "Pan sin gluten con AOVE y tomate rallado",
+      "lunch": "Butifarra con judías blancas (Tu favorito, controlando la ración de judías)",
+      "merienda": "Batido: 200ml leche semi + 25g proteína AMIX",
+      "dinner": "Sopa de caldo Aneto con un poco de pollo desmenuzado"
     },
     {
       "day": "Monday",
-      "breakfast": "Tostadas con AOVE y tortilla francesa de un huevo",
-      "lunch": "Arroz integral con verduras y pollo en tiras",
-      "dinner": "Tortilla francesa con pimiento rojo a la plancha y ensalada verde; yogur griego de postre"
+      "breakfast": "Tostada de aguacate",
+      "lunch": "Hamburguesa de ternera (2 uds) con patata al horno (Movido del sábado)",
+      "merienda": "Batido: 200ml leche semi + 25g proteína AMIX",
+      "dinner": "Salteado de verduras con tofu o restos de pollo"
+    },
+    {
+      "day": "Tuesday",
+      "breakfast": "Pan sin gluten con jamón",
+      "lunch": "Pizza casera masa fina con verduras y pollo (Movido del jueves)",
+      "merienda": "Fruta entera",
+      "dinner": "Pescado a la plancha o ensalada ligera"
     }
   ]
 }
