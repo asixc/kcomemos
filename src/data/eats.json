@@ -7,14 +7,14 @@
       "breakfast": "Pan sin gluten con AOVE y jamón serrano",
       "lunch": "Lentejas guisadas con muchas verduras y tomate (o arroz con verduras si no hay)",
       "merienda": "Batido: 200ml leche semi + 25g proteína AMIX (sin plátano)",
-      "dinner": "Tortilla francesa de 2 huevos y una lata de atún al natural (Cena limpia)"
+      "dinner": "Caldo de crema de verduras con pasta sin gluten (60 gramos para dos)"
     },
     {
       "day": "Wednesday",
       "breakfast": "Tostada de pan de sarraceno con aguacate y huevo",
       "lunch": "Salmón a la airfryer con una base pequeña de arroz basmati",
       "merienda": "Batido: 200ml leche semi + 25g proteína AMIX + 1 plátano (Día de entreno)",
-      "dinner": "Pescado blanco a la plancha con espárragos verdes; yogur griego"
+      "dinner": "Tortilla francesa de 2 huevos y una lata de atún al natural (Cena limpia)"
     },
     {
       "day": "Thursday",
@@ -49,14 +49,14 @@
       "breakfast": "Tostada de aguacate",
       "lunch": "Hamburguesa de ternera (2 uds) con patata al horno (Movido del sábado)",
       "merienda": "Batido: 200ml leche semi + 25g proteína AMIX",
-      "dinner": "Salteado de verduras con tofu o restos de pollo"
+      "dinner": "Salmón a la plancha con 60 gramos para dos de arroz basmati" 
     },
     {
       "day": "Tuesday",
       "breakfast": "Pan sin gluten con jamón",
       "lunch": "Pizza casera masa fina con verduras y pollo (Movido del jueves)",
       "merienda": "Fruta entera",
-      "dinner": "Pescado a la plancha o ensalada ligera"
+      "dinner": "Tostada de aguacate con huevo escalfado"
     }
   ]
 }
